@@ -1,0 +1,49 @@
+.list__container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.05);
+}
+.listItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.listItem__body {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+.listItem__text {
+  font-size: 24px;
+  font-weight: bold;
+  flex: 1 1 40%;
+}
+
+.listItem__text:nth-child(2) {
+  flex-grow: 0.6;
+}
+
+.listItem__button {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.listItem__button:hover svg {
+  fill: #000;
+}
+
+.listItem__button svg {
+  fill: #818181;
+  width: 50%;
+  height: 50%;
+  transition: fill 0.2s ease;
+}

@@ -1,0 +1,29 @@
+.counter__wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, 0.05);
+}
+
+.count {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.counter__title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #8d8d8d;
+}
+
+.counter__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}

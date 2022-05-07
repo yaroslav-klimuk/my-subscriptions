@@ -25,6 +25,8 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-unused-vars": "warn",
     "react/function-component-definition": [
       2,
       {

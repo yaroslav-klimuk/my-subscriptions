@@ -1,8 +1,10 @@
 import React from 'react';
 import ListItem from './ListItem';
 import classes from './List.module.css';
+import { SubscriptionObject } from './types';
+import Button from '../Button/Button';
 
-const arr = [
+const arr: SubscriptionObject[] = [
   {
     name: 'Netflix',
     amount: 12,
@@ -13,9 +15,17 @@ const arr = [
   },
 ];
 
-const List = () => (
+const List: React.FC = (): JSX.Element => (
   <div className={classes.list__container}>
-    <ListItem subscriptions={arr} />
+    <div className={classes.list__body}>
+      {arr.map(({ name, amount }) => (
+        <ListItem name={name} amount={amount} />
+      ))}
+    </div>
+
+    <div className={classes.list__footer}>
+      <Button text="Add new" />
+    </div>
   </div>
 );
 export default List;

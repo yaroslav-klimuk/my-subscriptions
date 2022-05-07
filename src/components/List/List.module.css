@@ -1,4 +1,8 @@
 .list__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 480px;
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
@@ -9,13 +13,16 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .listItem__body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-left: 20px;
+  margin-left: 20px;
+  padding: 20px 0 15px 0;
+  border-bottom: 2px solid #d7d5d5;
 }
 
 .listItem__text {
@@ -46,4 +53,11 @@
   width: 50%;
   height: 50%;
   transition: fill 0.2s ease;
+}
+
+.list__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  border-top: 2px solid #d7d5d5;
 }

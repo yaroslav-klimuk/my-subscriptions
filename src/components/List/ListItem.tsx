@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import classes from './List.module.css';
-import Icon from './Icon';
+import Icon from '../Icon/Icon';
 import { SubscriptionObject } from './types';
 
 const ListItem: React.FC<SubscriptionObject> = ({
@@ -31,6 +31,4 @@ const ListItem: React.FC<SubscriptionObject> = ({
   );
 };
 
-{
-}
 export default ListItem;

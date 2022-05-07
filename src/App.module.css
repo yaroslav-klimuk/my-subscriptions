@@ -5,6 +5,7 @@ body {
 .wrapper {
   max-width: 1320px;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .container {

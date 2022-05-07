@@ -1,31 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ListItem from './ListItem';
 import classes from './List.module.css';
 import { SubscriptionObject } from './types';
 import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 
-const arr: SubscriptionObject[] = [
-  {
-    name: 'Netflix',
-    amount: 12,
-  },
-  {
-    name: 'AppleMusic',
-    amount: 6,
-  },
-];
+interface ListProps {
+  subscriptions: SubscriptionObject[];
+}
 
-const List: React.FC = (): JSX.Element => (
-  <div className={classes.list__container}>
-    <div className={classes.list__body}>
-      {arr.map(({ name, amount }) => (
-        <ListItem name={name} amount={amount} />
-      ))}
-    </div>
+const List: React.FC<ListProps> = ({
+  subscriptions,
+}: ListProps): JSX.Element => {
+  const [openModal, setOpenModal] = useState(false);
 
-    <div className={classes.list__footer}>
-      <Button text="Add new" />
-    </div>
-  </div>
-);
+  const clickHandler = () => {
+    setOpenModal(!openModal);
+  };
+
+  const closeHandler = () => {
+    setOpenModal(false);
+  };
+
+  return (
+    <>
+      <div className={classes.list__container}>
+        <div className={classes.list__body}>
+          {subscriptions.map(({ name, amount }) => (
+            <ListItem name={name} amount={amount} key={name} />
+          ))}
+        </div>
+        <div className={classes.list__footer}>
+          <Button text="Add new" onClick={clickHandler} />
+        </div>
+      </div>
+      <Modal open={openModal} onClose={closeHandler} />
+    </>
+  );
+};
+
 export default List;

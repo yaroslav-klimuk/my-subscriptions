@@ -1,19 +1,23 @@
 import React from 'react';
-import Counter from './components/Counter/Counter';
 import classes from './App.module.css';
-import counterClasses from './components/Counter/Counter.module.css';
-import List from './components/List/List';
+import Container from './components/Container/Container';
+import { SubscriptionObject } from './components/List/types';
+
+const subscriptionsArray: SubscriptionObject[] = [
+  {
+    name: 'Netflix',
+    amount: 12,
+  },
+  {
+    name: 'AppleMusic',
+    amount: 6,
+  },
+];
 
 const App = () => (
   <div className={classes.wrapper}>
     <h1 className={classes.title}>My subcriptions</h1>
-    <div className={classes.container}>
-      <div className={counterClasses.counter__row}>
-        <Counter count={2} text="Active Subcriptions" />
-        <Counter count={20} text="Monthly" sum />
-      </div>
-      <List />
-    </div>
+    <Container data={subscriptionsArray} />
   </div>
 );
 

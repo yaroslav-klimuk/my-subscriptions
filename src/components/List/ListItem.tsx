@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './List.module.css';
 import Icon from '../Icon/Icon';
 import { SubscriptionObject } from './types';
-
+import subscriptions from '../../subscriptions';
 const ListItem: React.FC<SubscriptionObject> = ({
   name,
   amount,
@@ -12,7 +12,9 @@ const ListItem: React.FC<SubscriptionObject> = ({
     <div className={classes.listItem}>
       <Icon name={name} />
       <div className={classes.listItem__body}>
-        <span className={classes.listItem__text}>{name}</span>
+        <span className={classes.listItem__text}>
+          {subscriptions[name].label}
+        </span>
         <span className={classes.listItem__text}>${amount}</span>
         <button type="button" className={classes.listItem__button}>
           <svg

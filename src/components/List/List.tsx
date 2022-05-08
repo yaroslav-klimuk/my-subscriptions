@@ -31,7 +31,7 @@ const List: React.FC<ListProps> = ({
           ))}
         </div>
         <div className={classes.list__footer}>
-          <Button text="Add new" onClick={clickHandler} />
+          <Button text="Add new" width="50%" onClick={clickHandler} />
         </div>
       </div>
       <Modal open={openModal} onClose={closeHandler} />

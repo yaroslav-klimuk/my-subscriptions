@@ -5,11 +5,11 @@ import { SubscriptionObject } from './components/List/types';
 
 const subscriptionsArray: SubscriptionObject[] = [
   {
-    name: 'Netflix',
+    name: 'netflix',
     amount: 12,
   },
   {
-    name: 'AppleMusic',
+    name: 'appleMusic',
     amount: 6,
   },
 ];

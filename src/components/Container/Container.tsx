@@ -6,21 +6,6 @@ import counterClasses from '../Counter/Counter.module.css';
 import { SubscriptionObject } from '../List/types';
 import List from '../List/List';
 
-const data: SubscriptionObject[] = [
-  {
-    name: 'netflix',
-    price: 12,
-  },
-  {
-    name: 'appleMusic',
-    price: 6,
-  },
-  {
-    name: 'spotify',
-    price: 5,
-  },
-];
-
 interface IContext {
   activeSubscriptions: SubscriptionObject[];
   setActiveSubscriptions: React.Dispatch<React.SetStateAction<never[]>>;

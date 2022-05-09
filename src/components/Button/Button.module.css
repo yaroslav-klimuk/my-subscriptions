@@ -12,3 +12,11 @@
 .button:hover {
   background-color: #4895fb;
 }
+
+.button_disabled {
+  background-color: #d7d6d6;
+  cursor: unset;
+}
+.button_disabled:hover {
+  background-color: #d7d6d6;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, { useState } from 'react';
 import ListItem from './ListItem';
 import classes from './List.module.css';
@@ -34,7 +35,7 @@ const List: React.FC<ListProps> = ({
           <Button text="Add new" width="50%" onClick={clickHandler} />
         </div>
       </div>
-      <Modal open={openModal} onClose={closeHandler} />
+      {openModal && <Modal onClose={closeHandler} />}
     </>
   );
 };

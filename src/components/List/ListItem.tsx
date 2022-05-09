@@ -1,13 +1,23 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './List.module.css';
 import Icon from '../Icon/Icon';
 import { SubscriptionObject } from './types';
 import subscriptions from '../../subscriptions';
+import { Context } from '../Container/Container';
+
 const ListItem: React.FC<SubscriptionObject> = ({
   name,
-  amount,
+  price,
 }: SubscriptionObject): JSX.Element => {
+  const context = useContext(Context);
+
+  const removeHandler = () => {
+    context.setActiveSubscriptions((prev: SubscriptionObject[]) => {
+      const removeItem = prev.filter((item) => item.name !== name);
+      return [...removeItem];
+    });
+  };
   return (
     <div className={classes.listItem}>
       <Icon name={name} />
@@ -15,8 +25,12 @@ const ListItem: React.FC<SubscriptionObject> = ({
         <span className={classes.listItem__text}>
           {subscriptions[name].label}
         </span>
-        <span className={classes.listItem__text}>${amount}</span>
-        <button type="button" className={classes.listItem__button}>
+        <span className={classes.listItem__text}>${price}</span>
+        <button
+          type="button"
+          className={classes.listItem__button}
+          onClick={removeHandler}
+        >
           <svg
             fill="#818181"
             strokeWidth="0"

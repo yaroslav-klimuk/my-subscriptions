@@ -1,35 +1,65 @@
-import React, { useState, useEffect, useMemo } from 'react';
+/* eslint-disable import/no-cycle */
+import React, { useState, createContext, useMemo, useEffect } from 'react';
 import Counter from '../Counter/Counter';
 import classes from '../../App.module.css';
 import counterClasses from '../Counter/Counter.module.css';
 import { SubscriptionObject } from '../List/types';
 import List from '../List/List';
 
-interface ContainerProps {
-  data: SubscriptionObject[];
+const data: SubscriptionObject[] = [
+  {
+    name: 'netflix',
+    price: 12,
+  },
+  {
+    name: 'appleMusic',
+    price: 6,
+  },
+  {
+    name: 'spotify',
+    price: 5,
+  },
+];
+
+interface IContext {
+  activeSubscriptions: SubscriptionObject[];
+  setActiveSubscriptions: React.Dispatch<React.SetStateAction<never[]>>;
 }
 
-const Container: React.FC<ContainerProps> = ({
-  data,
-}: ContainerProps): JSX.Element => {
-  const [sum, setSum] = useState(0);
+export const Context = createContext<IContext | Record<string, any>>({});
 
-  const amount = useMemo(
-    (): number => data.reduce((acc, item) => acc + item.amount, 0),
-    [data]
+const Container = (): JSX.Element => {
+  const [sum, setSum] = useState(0);
+  const [activeSubscriptions, setActiveSubscriptions] = useState<
+    SubscriptionObject[]
+  >([]);
+
+  const contextObj = useMemo(
+    () => ({
+      activeSubscriptions,
+      setActiveSubscriptions,
+    }),
+    [activeSubscriptions]
   );
 
   useEffect(() => {
-    setSum(amount);
-  }, [data, amount]);
+    setSum(() =>
+      activeSubscriptions.reduce((acc, item) => acc + item.price, 0)
+    );
+  }, [activeSubscriptions]);
 
   return (
     <div className={classes.container}>
       <div className={counterClasses.counter__row}>
-        <Counter count={data.length} text="Active Subcriptions" />
+        <Counter
+          count={activeSubscriptions.length || 0}
+          text="Active Subcriptions"
+        />
         <Counter count={sum} text="Monthly" sum />
       </div>
-      <List subscriptions={data} />
+      <Context.Provider value={contextObj}>
+        <List subscriptions={activeSubscriptions} />
+      </Context.Provider>
     </div>
   );
 };

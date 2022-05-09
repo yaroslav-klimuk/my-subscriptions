@@ -26,8 +26,8 @@ const List: React.FC<ListProps> = ({
     <>
       <div className={classes.list__container}>
         <div className={classes.list__body}>
-          {subscriptions.map(({ name, amount }) => (
-            <ListItem name={name} amount={amount} key={name} />
+          {subscriptions.map(({ name, price }) => (
+            <ListItem name={name} price={price} key={name} />
           ))}
         </div>
         <div className={classes.list__footer}>
